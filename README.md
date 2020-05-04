@@ -1,5 +1,3 @@
-# BlackJack
- 
 BlackJack 0.3
 =============
 
@@ -7,6 +5,7 @@ Blackjack game created to help me learn python.
 The goal is make a program that can play by it's own
 and show the statistics envolved. Expanded to be an real, rich, fast and reliable
 player strategy test ambient
+
 
 Features:
 =========
@@ -22,7 +21,8 @@ Features:
 - Multiprocessing, Multithreading (give a number of simulations to a process and create several processes)
 - Set the precision of calculus used and in results
 
-T O D O List:
+
+TODO List:
 =============
 
 - TODO: Implement insurance, the amout payied for insurance, the amout payed by blackjack .. all in parameters
@@ -56,8 +56,9 @@ T O D O List:
 
 - FIX: -- When i use 3 players with 1 match... the statistics look wrong. Have to check that
 
-RULES and DETAILS:
-==================
+
+Rules and Details used:
+=======================
 
 - Dealer must hit if lower then 16. If ctHIT_ON_SOFT_HAND = True then see comment in the variable
 - Order of play: Dealer gives a card for each player, one for him face up. Then one again for each player and one for him again
@@ -71,6 +72,7 @@ RULES and DETAILS:
 
 
 References:
+===========
 
 https://pdfs.semanticscholar.org/e1dd/06616e2d18179da7a3643cb3faab95222c8b.pdf
 https://www.888casino.com/blog/blackjack-strategy-guide
