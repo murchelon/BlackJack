@@ -49,12 +49,17 @@ TODO List:
 - TODO: Implement pays more when blackjack (natural)
 - TODO: Add SEVERAL small rules that can be found in https://en.wikipedia.org/wiki/Blackjack
 
+FIX list:
+=========
 
 - FIX: --  There are sometimes when i try to pop a card from the current deck, but
            as there are so many players (in games with >30 players) that there is no card to pop
            need to implement a wat to detect there is no card and create a new current deck. Probably have to make current deck a global var
 
 - FIX: -- When i use 3 players with 1 match... the statistics look wrong. Have to check that
+
+- FIX: -- When started using VS Code, there is one line of code that changed the its behavior: In line XX of XX I used to print the statistics INLINE,
+with one line printed in the screen, overwriting the old one. Now, the lines keep being printing in a new line, killing performance. 
 
 
 Rules and Details used:
