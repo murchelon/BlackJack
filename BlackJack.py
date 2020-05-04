@@ -662,11 +662,13 @@ def simulate_matches(params: list, index_proc: int = -1, return_dict: list = Non
         line += " -- {:.2f}".format(speed) + " matches/s"
 
         if index_proc in [-1, 0] or processing_mode == "NORMAL":
-            print_inline(line)
+            # print_inline(line)
+            pass
 
     if num_matches > 10:
         if processing_mode in ["NORMAL"]:
-            print("")
+            # print("")
+            pass
 
     final_result = []
 
