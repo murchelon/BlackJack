@@ -3,7 +3,6 @@ import random as rnd
 
 from bib_support import get_card_val
 
-
 AVALIABLE_ALGS = ["NEVER", "ALWAYS", "50X50", "BJ_BASIC_STRAT_FULL", "BJ_BASIC_STRAT_NOSPLIT_NODOUBLE", "MURCH", "DEALER"]
 
 # Default algoritm for the dealer. Follows the rules of the game for the dealer
