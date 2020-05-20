@@ -33,7 +33,7 @@ ctNUM_PLAYERS = 1
 ctSTRAT_ALGORITM = "BJ_BASIC_STRAT_FULL"
 
 # Number of maches being simulated
-ctNUM_MATCHES = 10000
+ctNUM_MATCHES = 100000
 
 # Number of complete decks of cards in play. When there are only 20% of cards in the combined decks, the dealer get a new set of decks and shuffle them
 ctNUM_OF_DECKS = 6
@@ -72,6 +72,8 @@ ctALLOW_SURRENDER = True
 # that originaly were in the decks
 ctRESHUFFLE_DECK_PERC = 0.20
 
+# prints the result of each match on the screen. Slows it a lot.
+ctPRINT_RESULT_IN_REALTIME = False
 
 # //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #
@@ -593,14 +595,19 @@ def simulate_matches(params: list, index_proc: int = -1, return_dict: list = Non
 
         line += " -- {:.2f}".format(speed) + " matches/s"
 
+
+
         if index_proc in [-1, 0] or processing_mode == "NORMAL":
-            # print_inline(line)
-            pass
+            if ctPRINT_RESULT_IN_REALTIME:
+                if (x % 5000 == 0) or (x == 200):
+                    print_inline(line)
+        
 
     if num_matches > 10:
         if processing_mode in ["NORMAL"]:
-            # print("")
-            pass
+            if ctPRINT_RESULT_IN_REALTIME:
+                print("")
+            
 
     final_result = []
 
