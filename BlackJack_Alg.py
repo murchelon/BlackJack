@@ -89,7 +89,7 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
         return ret
 
     found_pair_match = False
-    found_total_match = False
+    _found_total_match = False
 
     # check if we have a pair in the first hand, in the begining of the game
     if len(cards) == 2:
@@ -280,7 +280,7 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
             if card_sum <= 8:
 
                 ret = "HIT"
-                found_total_match = True
+                _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 9           H   Dh  Dh  Dh  Dh  H   H   H   H   H
@@ -289,16 +289,16 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {1, 2, 7, 8, 9, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {3, 4, 5, 6}:
 
                     if allow_double:
                         ret = "DOUBLE"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 10          Dh  Dh  Dh  Dh  Dh  Dh  Dh  Dh  H   H
@@ -307,16 +307,16 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {1, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {2, 3, 4, 5, 6, 7, 8, 9}:
 
                     if allow_double:
                         ret = "DOUBLE"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "HIT"
-                        found_total_match = True
+                        _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 11          Dh  Dh  Dh  Dh  Dh  Dh  Dh  Dh  Dh  Dh
@@ -324,10 +324,10 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
 
                 if allow_double:
                     ret = "DOUBLE"
-                    found_total_match = True
+                    _found_total_match = True
                 else:
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 12          H   H   S   S   S   H   H   H   H   H
@@ -336,12 +336,12 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {4, 5, 6}:
 
                     ret = "STAND"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {1, 2, 3, 7, 8, 9, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 13–14       S   S   S   S   S   H   H   H   H   H
@@ -350,12 +350,12 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {2, 3, 4, 5, 6}:
 
                     ret = "STAND"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {1, 7, 8, 9, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 15          S   S   S   S   S   H   H   H   SU  H
@@ -364,21 +364,21 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {2, 3, 4, 5, 6}:
 
                     ret = "STAND"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {1, 7, 8, 9}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {10}:
 
                     if allow_surrender:
                         ret = "SURRENDER"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "HIT"
-                        found_total_match = True
+                        _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 16          S   S   S   S   S   H   H   SU  SU  SU
@@ -387,28 +387,28 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {2, 3, 4, 5, 6}:
 
                     ret = "STAND"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {7, 8}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {1, 9, 10}:
 
                     if allow_surrender:
                         ret = "SURRENDER"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "HIT"
-                        found_total_match = True
+                        _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 17–20       S   S   S   S   S   S   S   S   S   S
             elif card_sum >= 17 and card_sum <= 20:
 
                 ret = "STAND"
-                found_total_match = True
+                _found_total_match = True
 
         else:
 
@@ -439,16 +439,16 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {1, 2, 3, 4, 7, 8, 9, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {5, 6}:
 
                     if allow_double:
                         ret = "DOUBLE"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "HIT"
-                        found_total_match = True
+                        _found_total_match = True
 
             # Dealer ->                             2   3   4   5   6   7   8   9   10  A
             # Player -> A,4–A,5 (5-6 or 15-16)      H   H   Dh  Dh  Dh  H   H   H   H   H
@@ -457,16 +457,16 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {1, 2, 3, 7, 8, 9, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {4, 5, 6}:
 
                     if allow_double:
                         ret = "DOUBLE"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "HIT"
-                        found_total_match = True
+                        _found_total_match = True
 
             # Dealer ->                             2   3   4   5   6   7   8   9   10  A
             # Player -> A,6 (7 or 17)               H   Dh  Dh  Dh  Dh  H   H   H   H   H
@@ -475,16 +475,16 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {1, 2, 7, 8, 9, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {3, 4, 5, 6}:
 
                     if allow_double:
                         ret = "DOUBLE"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "HIT"
-                        found_total_match = True
+                        _found_total_match = True
 
             # Dealer ->                             2   3   4   5   6   7   8   9   10  A
             # Player -> A,7 (8 or 18)               Ds  Ds  Ds  Ds  Ds  S   S   H   H   H
@@ -493,25 +493,25 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {1, 9, 19}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {2, 3, 4, 5, 6}:
 
                     if allow_double:
                         ret = "DOUBLE"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "STAND"
-                        found_total_match = True
+                        _found_total_match = True
 
                 if known_dealer_card_value in {7, 8}:
                     ret = "STAND"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {1, 9, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
             # Dealer ->                             2   3   4   5   6   7   8   9   10  A
             # Player -> A,8 (9 or 19)               S   S   S   S   Ds  S   S   S   S   S
@@ -521,22 +521,22 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
 
                     if allow_double:
                         ret = "DOUBLE"
-                        found_total_match = True
+                        _found_total_match = True
                     else:
                         ret = "STAND"
-                        found_total_match = True
+                        _found_total_match = True
 
                 if known_dealer_card_value in {1, 2, 3, 4, 5, 7, 8, 9, 10}:
 
                     ret = "STAND"
-                    found_total_match = True
+                    _found_total_match = True
 
             # Dealer ->                             2   3   4   5   6   7   8   9   10  A
             # Player -> A,9 (10 or 20)              S   S   S   S   S   S   S   S   S   S
             if card_sum == 10 or card_sum == 20:
 
                 ret = "STAND"
-                found_total_match = True
+                _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 11          Dh  Dh  Dh  Dh  Dh  Dh  Dh  Dh  Dh  Dh
@@ -544,10 +544,10 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
 
                 if allow_double:
                     ret = "DOUBLE"
-                    found_total_match = True
+                    _found_total_match = True
                 else:
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
             # Dealer ->             2   3   4   5   6   7   8   9   10  A
             # Player -> 12          H   H   S   S   S   H   H   H   H   H
@@ -556,17 +556,17 @@ def blackjack_alg_BJ_BASIC_STRAT_FULL(caller: object,
                 if known_dealer_card_value in {4, 5, 6}:
 
                     ret = "STAND"
-                    found_total_match = True
+                    _found_total_match = True
 
                 if known_dealer_card_value in {1, 2, 3, 7, 8, 9, 10}:
 
                     ret = "HIT"
-                    found_total_match = True
+                    _found_total_match = True
 
     # # fall here only if didnt match any other rule above. CAN NOT get in ther.
     # # If it does, then i did something wrong with the algoritm because all
     # # possible cases are described above
-    # if found_pair_match == False and found_total_match == False:
+    # if found_pair_match == False and _found_total_match == False:
     #     if card_sum <= 15:
     #         ret = "HIT"
     #     else:
@@ -601,7 +601,7 @@ def blackjack_alg_BJ_BASIC_STRAT_NOSPLIT_NODOUBLE(caller: object) -> str:
     ret = None
 
     found_pair_match = False
-    found_total_match = False
+    _found_total_match = False
 
     # check if we have a pair in the first hand, in the begining of the game
     if len(caller.cards) == 2:
@@ -660,7 +660,7 @@ def blackjack_alg_BJ_BASIC_STRAT_NOSPLIT_NODOUBLE(caller: object) -> str:
             # HARD HAND (excluding pairs):
             if card_sum <= 11:
                 ret = "HIT"
-                found_total_match = True
+                _found_total_match = True
 
             elif card_sum == 12:
                 if known_dealer_card_value >= 4 and known_dealer_card_value <= 6:
@@ -668,7 +668,7 @@ def blackjack_alg_BJ_BASIC_STRAT_NOSPLIT_NODOUBLE(caller: object) -> str:
                 else:
                     ret = "HIT"
 
-                found_total_match = True
+                _found_total_match = True
 
             elif card_sum >= 13 and card_sum <= 16:
                 if known_dealer_card_value >= 2 and known_dealer_card_value <= 6:
@@ -676,18 +676,18 @@ def blackjack_alg_BJ_BASIC_STRAT_NOSPLIT_NODOUBLE(caller: object) -> str:
                 else:
                     ret = "HIT"
 
-                found_total_match = True
+                _found_total_match = True
 
             elif card_sum >= 17 and card_sum <= 21:
                 ret = "STAND"
-                found_total_match = True
+                _found_total_match = True
 
         else:
             # SOFT HAND (excluding pairs):
 
             if card_sum >= 13 and card_sum <= 17:
                 ret = "HIT"
-                found_total_match = True
+                _found_total_match = True
 
             elif card_sum == 18:
                 if known_dealer_card_value in {1, 9, 10}:
@@ -695,18 +695,18 @@ def blackjack_alg_BJ_BASIC_STRAT_NOSPLIT_NODOUBLE(caller: object) -> str:
                 else:
                     ret = "STAND"
 
-                found_total_match = True
+                _found_total_match = True
 
             elif card_sum >= 19:
                 ret = "STAND"
-                found_total_match = True
+                _found_total_match = True
 
             #  bellow seams to improve player win i dont know why
             # ret = "STAND"
-            # found_total_match = True
+            # _found_total_match = True
 
     # fall here only if didnt match any other rule above
-    if found_pair_match == False and found_total_match == False:
+    if found_pair_match == False and _found_total_match == False:
         if card_sum <= 15:
             ret = "HIT"
         else:
