@@ -213,7 +213,7 @@ class GamePlayer:
 
             # test if the selected alg is implemented
             if self.algoritm not in alg.AVALIABLE_ALGS:
-                raise ValueError("The selected algoritm is not implemented. Selected: " + self.algoritm + " | Avaliable: " + str(avaliable_algs))
+                raise ValueError("The selected algoritm is not implemented. Selected: " + self.algoritm + " | Avaliable: " + str(alg.AVALIABLE_ALGS))
 
             # check witch alg to use and use it
             if self.algoritm == "DEALER":
@@ -249,11 +249,11 @@ class GamePlayer:
             if ret == "":
 
                 if _hand_number == 0:
-                    cards = caller.cards
+                    cards = self.cards
                     print("ERROR: get_next_action returned no action. _hand_number = " + str(_hand_number) + " | Player cards: " + cards)
 
                 else:
-                    cards = caller.cards_splitted
+                    cards = self.cards_splitted
                     print("ERROR: get_next_action returned no action. _hand_number = " + str(_hand_number) + " | Player cards_splitted: " + cards)
 
             self.last_action = ret
@@ -677,7 +677,6 @@ def run_match(deck: list, arrGamePlayers: object) -> list:
     """
 
     winner = []
-    ret_result = []
 
     #  create player and dealer
     # dealer = GamePlayer(0, _name="Blacu Jacku Dueler", _algoritm="DEALER", _type="DEALER", _cards=[])
@@ -1330,7 +1329,7 @@ def new_deck(shuffled: bool = True, number_of_decks_used: int = 1) -> list:
 
     deck_final = []
 
-    for x in range(1, number_of_decks_used + 1):
+    for _ in range(1, number_of_decks_used + 1):
         deck = [[value, suit] for value in values for suit in suits]
 
         deck_final = deck_final + deck
